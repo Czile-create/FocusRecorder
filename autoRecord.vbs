@@ -1,1 +1,1 @@
-CreateObject("WScript.Shell").Run "python C:\Users\Czile\Documents\.Focus\src\main.py -r", 0
+CreateObject("WScript.Shell").Run "python C:\Users\Czile\Documents\FocusRecorder\src\main.py -r", 0
