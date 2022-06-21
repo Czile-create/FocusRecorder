@@ -3,7 +3,7 @@ def widget(sqlserver, start_time, description):
     cursor = sqlserver.run(f'''
         with tmp1 as (
             select  time,
-                    tag,
+                    ifnull(tag, 'Other') tag,
                     time - lag(time, 1, 0) over (partition by tag order by time) as t
             from    focus
             left join tags on focus.title = tags.title and focus.user = tags.user
@@ -28,9 +28,12 @@ def run(user = ''):
     sqlserver = utls.sqlServer()
     if user != '': sqlserver.config['tags']['user'] = user
     start_time = int(time.mktime(datetime.date.today().timetuple()))
-    print('今日内')
-    widget(sqlserver, start_time, 'today')
-    print('过去24小时')
-    widget(sqlserver, time.time() - 24*3600, '24h')
-    print('过去一周')
-    widget(sqlserver, time.time() - 24*3600*7, 'thisWeek')
+    if sqlserver.config['default']['show']['today']:
+        print('今日内')
+        widget(sqlserver, start_time, 'today')
+    if sqlserver.config['default']['show']['24h']:
+        print('过去24小时')
+        widget(sqlserver, time.time() - 24*3600, '24h')
+    if sqlserver.config['default']['show']['thisWeek']:
+        print('过去一周')
+        widget(sqlserver, time.time() - 24*3600*7, 'thisWeek')
