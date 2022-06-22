@@ -1,0 +1,73 @@
+Metadata-Version: 2.1
+Name: FocusRecorder
+Version: 1.0.16
+Summary: 记录电脑使用记录
+Home-page: https://github.com/Czile-create/FocusRecorder
+Author: Czile
+Author-email: Czile@foxmail.com
+License: Apache License
+Description: # FocusRecorder
+        
+        一个用来记录电脑使用时间的应用，基于 SQLITE3，支持自定义查询和数据管理，支持跨设备使用。
+        
+        ## 功能
+        
+        FocusRecorder 可以记录你的电脑各项应用的使用情况，相比于其他同类型产品，它可以：
+        - [x] **支持跨设备使用**，通过磁盘映射器，将数据库放置于云端空间，可以同步你在每个设备的使用记录
+        - [x] **支持自定义查询**，通过使用 SQL 语句，你可以随心所欲地从原始数据中获取任何你想得到的信息，而不必受制于其他产品给出的模板
+        - [x] **方便的标签管理**，你可以非常轻松地通过 SQL 语句，管理标签内容。例如，你可以轻松地将标题中含有 *泛函* 两个字的页面归为 *学习* 类别，同样地，可以将 *vscode* 的任何子界面归为 *工作* 类别，**通过 `--tag` 参数，可以轻松得到今天每个类别的使用时间**
+        - [x] **自适应空间管理**，你可以通过设置轻松管理数据库空间使用，例如，你可以让数据库只保留最近的30天的数据。
+        
+        **对于初学者，我们后续有计划完善查询的 SQL 教程**
+        
+        ![](img/01.png)
+        
+        ## 用法
+        ```
+        usage: FocusRecorder [-h] [--user USER] [--tags] [--status] [--command]
+                             [--record] [--setting] [--init]
+        
+        记录电脑使用时间
+        
+        optional arguments:
+          -h, --help            show this help message and exit
+          --user USER, -u USER  使用指定用户登录
+          --tags, -t            按标签查看使用量
+          --status, -s          查看数据库状态
+          --command, -c         使用sql语言管理和自定义查询
+          --record, -r          记录一次正在使用的窗口
+          --setting             设置默认参数
+          --init                启动记录服务
+        ```
+        
+        ## 开始使用
+        请按照下列步骤开始使用此应用：
+        1. 下载 `python3`，并将其加入环境变量，这一步网上有许多教程，此处不再展开。
+        2. 下载源代码：
+        ```bash
+        pip install FocusRecorder
+        ```
+        3. 初始化（请在管理员权限下运行）：
+        ```bash
+        FocusRecorder --init
+        ```
+        4. 调整设置（可选）
+        ```bash
+        FocusRecorder --setting
+        ```
+        在这里可以调整你对显示效果的喜好，包括只显示使用时间超过多少秒的应用，以及只显示使用时间最长的几个应用等等。
+        
+        5. 查看效果
+        ```bash
+        FocusRecorder
+        ```
+        这样就可以查看效果了。
+        
+        **对于进阶使用者，包括跨设备使用等情况，我们的进阶教程仍在编写中。**
+        
+        ## 参与贡献
+        可以提交 issue/PR 来参与贡献，如果使用的人数多，我会考虑建个小群。在 LICENSE 的限制下可以自由修改和使用本软件。
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: Apache Software License
+Description-Content-Type: text/markdown
