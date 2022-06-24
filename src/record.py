@@ -19,7 +19,7 @@ def run():
         sqlserver.run(
             f'''
                 delete from focus 
-                where       user = {getpass.getuser()[:20]}
+                where       user = '{getpass.getuser()[:20]}'
                 and         time < {int(time.time() - sqlserver.config['manager']['remainData'])}
             '''
         )
