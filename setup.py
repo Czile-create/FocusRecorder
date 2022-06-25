@@ -1,5 +1,5 @@
 import setuptools
-from src import __version__
+from FocusRecorder import __version__
 
 with open("README.MD", "r", encoding='utf-8') as fh:
     long_description = fh.read()
@@ -20,7 +20,7 @@ setuptools.setup(
         'FocusRecorder',
     ],
     package_dir={'FocusRecorder':
-                 'src'},
+                 'FocusRecorder'},
     classifiers=[
         "Programming Language :: Python :: 3",
         "License :: OSI Approved :: Apache Software License",
