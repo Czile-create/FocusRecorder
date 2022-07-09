@@ -1,4 +1,6 @@
 import os, json, sqlite3, prettytable
+
+from FocusRecorder.overview import overview
 class sqlServer:
     def __init__(self):
         if not os.path.isdir(os.path.join(os.environ['HOMEPATH'], 'FocusRecorder')):
@@ -47,7 +49,21 @@ class sqlServer:
                 'autoErase': False,
                 'remainData': 30*24*3600,
                 'notice': False
-            }
+            },
+            'colors': {
+                '0': [222, 245, 222],
+                '1': [213, 255, 213],
+                '2': [162, 255, 162],
+                '3': [106, 255, 106],
+                '4': [57, 255, 57],
+                '5': [97, 222, 97],
+                '6': [38, 218, 38],
+                '7': [11, 194, 11],
+                '8': [10, 169, 10],
+                '9': [6, 129, 6],
+                'default': [255, 255, 255]
+            },
+            'overview': True
         }
         if not os.path.isfile(os.path.join(os.environ['HOMEPATH'], 'FocusRecorder', 'config.json')):
             with open(os.path.join(os.environ['HOMEPATH'], 'FocusRecorder', 'config.json'), 'w') as f:

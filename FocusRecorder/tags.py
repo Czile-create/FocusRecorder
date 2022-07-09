@@ -1,5 +1,5 @@
 import getpass, time, datetime
-from FocusRecorder import utls
+from FocusRecorder import utls, overview
 def widget(sqlserver, start_time, description):
     cursor = sqlserver.run(f'''
         with tmp1 as (
@@ -29,6 +29,8 @@ def run(user = ''):
     sqlserver = utls.sqlServer()
     if user != '': sqlserver.config['tags']['user'] = user
     start_time = int(time.mktime(datetime.date.today().timetuple()))
+    if sqlserver.config['overview']:
+        overview.overview(sqlserver)
     if sqlserver.config['default']['show']['today']:
         print('今日内')
         widget(sqlserver, start_time, 'today')

@@ -12,7 +12,7 @@ setuptools.setup(
     version=__version__,
     author="Czile",
     author_email="Czile@foxmail.com",
-    description="记录电脑使用记录",
+    description="记录电脑各应用使用记录",
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/Czile-create/FocusRecorder",
